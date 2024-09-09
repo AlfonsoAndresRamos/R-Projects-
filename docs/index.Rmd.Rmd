@@ -20,6 +20,7 @@ library('forecast')
 library('bsts')
 library('nnet')
 ```
+
 ## Part 1: Alcoa Stocks
 In this analysis, we use the dataset aa-rv-20m.txt, which contains the realized daily volatility series of Alcoa stock returns. The data spans from January 2, 2003, to May 7, 2004, and is based on 20-minute intraday log returns. The primary goal is to model and analyze the log-transformed volatility series using two different approaches.
 After calling the necessary libraries. We open the dataset as a csv file and plot the Alcoa stocks as a Time series with  no seasonal component.
@@ -99,7 +100,9 @@ legend(1,20,legend=c('Observations','Smoothed data','95%Confidence interval'),
        col =c('black','seagreen','seagreen'),lty =c(1,1,2))
 
 ```
-##Part 2: Pfizer data
+
+## Part 2: Pfizer data
+
 In this part we wil use monthly simple excess returns of Pfizer stock and the S&P 500 composite index from
 January 1990 to December 2003. The excess returns are in m-pfesp-ex9003.txt with Pfizer stock
 returns in the first column.
@@ -156,7 +159,8 @@ lines(reg$s[,1], col = 'cadetblue3', lwd = 3)
 lines(pfizer$Pfizer,col = 'orange')
 legend(60,0.20,c('beta','alpha','Observed data'),col =c('black','cadetblue3','orange'),lty =c(1,1,1))
 ```
-##Part 3: U.S PPI index
+
+## Part 3: U.S PPI index
 The file "m-ppiaco4709.txt" contains year, month, day, and U.S. producer price index (PPI) from
 January 1947 to November 2009 that we will use to fit our AR(p) model
 We proceed to the reading and processing of our data. First take the observed data $Z_{t}\;\;\;t\in{1,2,3,....,n}$ and transform it first by doing $z_{t} = ln(Z_{t})-ln(Z_{t-1})$ and then by centering all the data on the mean by $y_{t} = z_{t}-\hat{z_{t}}$
@@ -249,7 +253,9 @@ lines(prodsmoothed$s,type='l',col = 'black',lwd = 1.9,,pch = 20)
 legend(1950,0.04,,legend=c('Observations','Smoothed AR'),
        col =c('grey','black'),lty=c(1,1))
 ```
-##Part 4: IBM stocks data
+
+## Part 4: IBM stocks data
+
 We now consider the simple returns of IBM stock, CRSP value-weighted index, CRSP equal-weighted index,
 and the S&P composite index from January 1980 to December 2008.
 After opening and checking the data, the exercise asks to perform a simple regression to see the effect of weekday trading at 5% confidence level.
@@ -278,7 +284,7 @@ resreg<-arima(regression$residuals,c(1,0,0))
 summary(resreg)
 
 ```
-##Part 5: GE stocks
+## Part 5: GE stocks
 Consider the monthly simple returns of GE stock from January 1926 to December 2008.
 In this exercise we are going to work with neural networks along with the forecasting of data. First of all we use the 'nnet' package, and in it´s detfect nnet function to fit the 1-2-3 feedforward network with 3 input layers 2 hidden layers and one output layer.
 Here is the summary of the fitted model with each coefficient for each layer. We get the 3 input layers as $i_{j}\,\,\; j \in 1,2,3$.
@@ -351,7 +357,7 @@ for (i in 2:length(prediction)) {
 }
 result
 ```
-##Part 6: US dollar-euro conversion$$
+## Part 6: US dollar-euro conversion
 
 We are going to see two prediction methods. First of all however we have to see how our data behaves.
 We plot the time series of U.S return in exchange for euro return.
